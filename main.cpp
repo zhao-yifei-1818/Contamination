@@ -6,9 +6,9 @@
 using namespace std;
 
 const int MAZE_SIZE = 10;
-const char EMPTY = '*';
+const char EMPTY = ' ';
 const char WALL = '#';
-const char CONTAMINATED = 'C';
+const char CONTAMINATED = '*';
 
 bool isSafe = true;       // track situation is safe
 int contaminatedArea = 0; // track contaminated area
