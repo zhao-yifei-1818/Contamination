@@ -1,11 +1,11 @@
 #include <iostream>
 
-using namespace std; // Use the standard namespace
+using namespace std;
 
 const int SIZE = 10;
-const char EMPTY = '*', WALL = '#',
-           CONTAMINATED = 'C'; // Define the characters for empty cells, walls,
-                               // and contaminated cells
+const char EMPTY = '*';
+const char WALL = '#';
+const char CONTAMINATED = 'C';
 
 bool isSafe = true;       // track situation is safe
 int contaminatedArea = 0; // track contaminated area
@@ -13,8 +13,8 @@ int contaminatedArea = 0; // track contaminated area
 void contaminate(char Location[SIZE][SIZE], int x, int y)
 {
   if (x < 0 || y < 0 || x >= SIZE
-      || y >= SIZE) { // If the current cell is out of the Location
-    isSafe = false;   // The situation is not safe
+      || y >= SIZE) { // if all the way over the range
+    isSafe = false;   // then its contaminated
     return;           // Stop the recursion
   }
 
