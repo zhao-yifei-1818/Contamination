@@ -5,7 +5,7 @@
  */
 using namespace std;
 
-const int SIZE = 10;
+const int MAZE_SIZE = 10;
 const char EMPTY = '*';
 const char WALL = '#';
 const char CONTAMINATED = 'C';
@@ -13,9 +13,10 @@ const char CONTAMINATED = 'C';
 bool isSafe = true;       // track situation is safe
 int contaminatedArea = 0; // track contaminated area
 
-void contaminate(char Location[SIZE][SIZE], int x, int y)
+void contaminate(char Location[MAZE_SIZE][MAZE_SIZE], int x, int y)
 {
-  if (x < 0 || y < 0 || x >= SIZE || y >= SIZE) { // if out of range base case
+  if (x < 0 || y < 0 || x >= MAZE_SIZE
+      || y >= MAZE_SIZE) { // if out of range base case
     isSafe = false;
     return;
   }
@@ -37,9 +38,9 @@ void contaminate(char Location[SIZE][SIZE], int x, int y)
 
 int main()
 {
-  char Location[SIZE][SIZE];
-  for (int i = 0; i < SIZE; i++) {
-    for (int j = 0; j < SIZE; j++) {
+  char Location[MAZE_SIZE][MAZE_SIZE];
+  for (int i = 0; i < MAZE_SIZE; i++) {
+    for (int j = 0; j < MAZE_SIZE; j++) {
       Location[i][j] = EMPTY; // Set the cell as empty
     }
   }
@@ -58,9 +59,9 @@ int main()
   contaminate(Location, x,
               y); // Start the contamination from the initial location
 
-  for (int i = 0; i < SIZE; i++) {   // For each row
-    for (int j = 0; j < SIZE; j++) { // For each column
-      cout << Location[i][j] << ' '; // Print the cell
+  for (int i = 0; i < MAZE_SIZE; i++) {   // For each row
+    for (int j = 0; j < MAZE_SIZE; j++) { // For each column
+      cout << Location[i][j] << ' ';      // Print the cell
     }
     cout << '\n'; // Print a newline
   }
