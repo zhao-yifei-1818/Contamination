@@ -26,10 +26,10 @@ void contaminate(char Location[MAZE_SIZE][MAZE_SIZE], int x, int y)
 
     return;
   }
-
+  // do job
   Location[x][y] = CONTAMINATED; // Contaminate the current cell
   contaminatedArea++;            // Increase the counter
-
+  // sending troop out
   contaminate(Location, x - 1, y); // Spread up
   contaminate(Location, x, y + 1); // right
   contaminate(Location, x + 1, y); // down
