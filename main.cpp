@@ -65,14 +65,16 @@ int main()
     for (int j = 0; j < MAZE_SIZE; j++) { // For each column
       cout << Location[i][j] << ' ';      // Print the cell
     }
-    cout << '\n'; // Print a newline
+    cout << endl;
+    ; // Print a newline
   }
 
   if (isSafe) { // If the situation is safe
     cout << "Safe!\n"
-         << "Contaminated area: " << contaminatedArea << '\n'; // Print
+         << "Contaminated area: " << contaminatedArea << endl; // Print
   } else { // If the situation is not safe
-    cout << "Not Safe\n";
+    cout << "Not Safe";
+    cout << endl;
   }
 
   return 0;
