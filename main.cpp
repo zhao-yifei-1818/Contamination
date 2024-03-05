@@ -1,8 +1,8 @@
 #include <iostream>
-/*
-Yifei Zhao
-
-*/
+/**
+ * @brief Assignment 8 Contamination
+ * @name Yifei Zhao
+ */
 using namespace std;
 
 const int SIZE = 10;
@@ -46,14 +46,13 @@ int main()
   int x;
   int y;
 
-  cout << "Enter contaminated location (row col): "; // Ask the user for the
-                                                     // contaminated location
-  cin >> x >> y; // Read the coordinates from the user
+  cout << "Enter contaminated location (row col): ";
+  cin >> x >> y;
 
   cout << "Enter wall locations (row col), followed by 0 0 to indicate end of "
-          "input:\n";             // Ask the user for the wall locations
-  while (cin >> x >> y, x || y) { // While the coordinates are not 0 0
-    Location[x][y] = WALL;        // Set the cell as a wall
+          "input:\n"; // Ask the user for the wall locations
+  while (cin >> x >> y, x || y) {
+    Location[x][y] = WALL;
   }
 
   contaminate(Location, x,
@@ -67,11 +66,11 @@ int main()
   }
 
   if (isSafe) { // If the situation is safe
-    cout << "Safe!\nContaminated area: " << contaminatedArea
-         << '\n'; // Print that the situation is safe and the contaminated area
-  } else {        // If the situation is not safe
-    cout << "Not Safe\n"; // Print that the situation is not safe
+    cout << "Safe!\n"
+         << "Contaminated area: " << contaminatedArea << '\n'; // Print
+  } else { // If the situation is not safe
+    cout << "Not Safe\n";
   }
 
-  return 0; // End the program
+  return 0;
 }
