@@ -72,7 +72,9 @@ int main()
     cout << "Safe!\n"
          << "Contaminated area: " << contaminatedArea << '\n'; // Print
   } else { // If the situation is not safe
-    cout << "Not Safe\n";
+    cout << "Not Safe\n"
+         << "Contaminated area: " << contaminatedArea << '\n';
+    ;
   }
 
   return 0;
