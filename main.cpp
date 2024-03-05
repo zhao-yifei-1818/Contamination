@@ -13,27 +13,29 @@ const char CONTAMINATED = 'C';
 bool isSafe = true;       // track situation is safe
 int contaminatedArea = 0; // track contaminated area
 
-void contaminate(char Location[MAZE_SIZE][MAZE_SIZE], int x, int y)
+void contaminate(char Location[MAZE_SIZE][MAZE_SIZE], int startrow,
+                 int startcol)
 {
-  if (x < 0 || y < 0 || x >= MAZE_SIZE
-      || y >= MAZE_SIZE) { // if out of range base case
+  if (startrow < 0 || startcol < 0 || startrow >= MAZE_SIZE
+      || startcol >= MAZE_SIZE) { // if out of range base case
     isSafe = false;
     return;
   }
 
-  if (Location[x][y] == WALL
-      || Location[x][y] == CONTAMINATED) { // wall or contaminated base case
+  if (Location[startrow][startcol] == WALL
+      || Location[startrow][startcol]
+             == CONTAMINATED) { // wall or contaminated base case
 
     return;
   }
 
-  Location[x][y] = CONTAMINATED; // Contaminate the current cell
-  contaminatedArea++;            // Increase the counter
+  Location[startrow][startcol] = CONTAMINATED; // Contaminate the current cell
+  contaminatedArea++;                          // Increase the counter
 
-  contaminate(Location, x - 1, y); // Spread up
-  contaminate(Location, x, y + 1); // right
-  contaminate(Location, x + 1, y); // down
-  contaminate(Location, x, y - 1); // left
+  contaminate(Location, startrow - 1, startcol); // Spread up
+  contaminate(Location, startrow, startcol + 1); // right
+  contaminate(Location, startrow + 1, startcol); // down
+  contaminate(Location, startrow, startcol - 1); // left
 }
 
 int main()
@@ -44,20 +46,20 @@ int main()
       Location[i][j] = EMPTY; // Set the cell as empty
     }
   }
-  int x;
-  int y;
+  int startrow;
+  int startcol;
 
   cout << "Enter contaminated location (row col): ";
-  cin >> x >> y;
+  cin >> startrow >> startcol;
 
   cout << "Enter wall locations (row col), followed by 0 0 to indicate end of "
           "input:\n"; // Ask the user for the wall locations
-  while (cin >> x >> y, x || y) {
-    Location[x][y] = WALL;
+  while (cin >> startrow >> startcol, startrow || startcol) {
+    Location[startrow][startcol] = WALL;
   }
 
-  contaminate(Location, x,
-              y); // Start the contamination from the initial location
+  contaminate(Location, startrow,
+              startcol); // Start the contamination from the initial location
 
   for (int i = 0; i < MAZE_SIZE; i++) {   // For each row
     for (int j = 0; j < MAZE_SIZE; j++) { // For each column
