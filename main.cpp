@@ -34,6 +34,11 @@ void contaminate(char Location[MAZE_SIZE][MAZE_SIZE], int x, int y)
   contaminate(Location, x, y + 1); // right
   contaminate(Location, x + 1, y); // down
   contaminate(Location, x, y - 1); // left
+
+  contaminate(Location, x - 1, y - 1); // top-left
+  contaminate(Location, x + 1, y - 1); // bottom-left
+  contaminate(Location, x - 1, y + 1); // top-right
+  contaminate(Location, x + 1, y + 1); // bottom-right
 }
 
 int main()
