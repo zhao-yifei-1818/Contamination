@@ -1,5 +1,8 @@
 #include <iostream>
+/*
+Yifei Zhao
 
+*/
 using namespace std;
 
 const int SIZE = 10;
@@ -12,25 +15,24 @@ int contaminatedArea = 0; // track contaminated area
 
 void contaminate(char Location[SIZE][SIZE], int x, int y)
 {
-  if (x < 0 || y < 0 || x >= SIZE
-      || y >= SIZE) { // if all the way over the range
-    isSafe = false;   // then its contaminated
-    return;           // Stop the recursion
+  if (x < 0 || y < 0 || x >= SIZE || y >= SIZE) { // if out of range base case
+    isSafe = false;
+    return;
   }
 
   if (Location[x][y] == WALL
-      || Location[x][y] == CONTAMINATED) { // If the current cell is a wall or
-                                           // already contaminated
-    return;                                // Stop the recursion
+      || Location[x][y] == CONTAMINATED) { // wall or contaminated base case
+
+    return;
   }
 
   Location[x][y] = CONTAMINATED; // Contaminate the current cell
-  contaminatedArea++; // Increase the counter of the contaminated area
+  contaminatedArea++;            // Increase the counter
 
-  contaminate(Location, x - 1, y); // Spread the contamination up
-  contaminate(Location, x, y + 1); // Spread the contamination right
-  contaminate(Location, x + 1, y); // Spread the contamination down
-  contaminate(Location, x, y - 1); // Spread the contamination left
+  contaminate(Location, x - 1, y); // Spread up
+  contaminate(Location, x, y + 1); // right
+  contaminate(Location, x + 1, y); // down
+  contaminate(Location, x, y - 1); // left
 }
 
 int main()
