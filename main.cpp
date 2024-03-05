@@ -49,11 +49,13 @@ int main()
 
   cout << "Enter contaminated location (row col): ";
   cin >> x >> y;
+  int startx;
+  int starty;
 
   cout << "Enter wall locations (row col), followed by 0 0 to indicate end of "
           "input:\n"; // Ask the user for the wall locations
-  while (cin >> x >> y, x || y) {
-    Location[x][y] = WALL;
+  while (cin >> startx >> starty, startx || starty) {
+    Location[startx][starty] = WALL;
   }
 
   contaminate(Location, x,
